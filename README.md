@@ -1,2 +1,2 @@
 # Mein-Portfolio
- perfekt um einen Ersteindruck von mir zu erhalten.
+ Perfekt um einen Ersteindruck von mir zu erhalten.
