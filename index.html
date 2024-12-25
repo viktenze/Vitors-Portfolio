@@ -87,10 +87,9 @@
             margin-bottom: 20px;
         }
 
-        /* Lebenslauf Iframe */
         iframe {
-            width: 80%;
-            height: 600px;
+            width: 80%;  /* Gleiche Breite wie der Lebenslauf */
+            height: 500px;  /* Gleiche Höhe wie der Lebenslauf */
             border: 1px solid #ddd;
             margin-bottom: 20px;
         }
@@ -99,9 +98,10 @@
             text-decoration: none;
             color: white;
             background-color: #0073b1;
-            padding: 10px 20px;
+            padding: 10px 20px;  /* Gleiche Padding wie der Lebenslauf */
             border-radius: 5px;
             font-size: 1rem;
+            text-align: center;
         }
 
         .download-button:hover {
@@ -122,32 +122,12 @@
             height: 30px;
         }
 
-        /* Motivationsschreiben Iframe */
-        #motivationsschreiben iframe {
-            width: 80%;
-            height: 600px;
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
-
-        /* Dropdown-Styling */
         select {
-            font-size: 1.2rem;
             padding: 10px;
-            margin-top: 20px;
-            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin: 20px 0;
             border-radius: 5px;
-        }
-
-        .pdf-container {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            width: 80%;
-        }
-
-        .pdf-container a {
-            color: #0073b1;
-            text-decoration: none;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
@@ -169,21 +149,21 @@
         <a href="lebenslauf.pdf" download class="download-button">Klick hier, um die Datei als PDF herunterzuladen</a>
     </div>
 
-    <!-- Motivationsschreiben -->
+    <!-- Motivationsschreiben mit Dropdown -->
     <div class="section" id="motivationsschreiben">
         <h2>Motivationsschreiben</h2>
         
-        <!-- Dropdown-Menü zum Wechseln zwischen Duales Studium und Jobangebot -->
+        <!-- Dropdown zum Wechseln zwischen Duales Studium und Jobangebot -->
         <select id="motivationswahl" onchange="updateMotivationsPDF()">
             <option value="duales-studium">Duales Studium</option>
             <option value="jobangebot">Jobangebot</option>
         </select>
 
-        <!-- PDF-Anzeige -->
-        <div class="pdf-container" id="pdf-container">
-            <iframe id="pdf-frame" src="duales-studium.pdf"></iframe>
-            <a id="pdf-link" href="duales-studium.pdf" download class="download-button">Klick hier, um die Datei als PDF herunterzuladen</a>
-        </div>
+        <!-- Iframe für das Motivationsschreiben -->
+        <iframe id="pdf-frame" src="duales-studium.pdf"></iframe>
+
+        <!-- Download-Link für das Motivationsschreiben -->
+        <a id="pdf-link" href="duales-studium.pdf" download class="download-button">Klick hier, um die Datei als PDF herunterzuladen</a>
     </div>
 
     <!-- LinkedIn -->
@@ -195,7 +175,7 @@
     </div>
 
     <script>
-        // Funktion, die den Link der PDF je nach Auswahl im Dropdown-Menü ändert
+        // Funktion zum Wechseln des PDF-Dokuments basierend auf der Auswahl im Dropdown-Menü
         function updateMotivationsPDF() {
             const selectElement = document.getElementById('motivationswahl');
             const pdfFrame = document.getElementById('pdf-frame');
@@ -203,31 +183,16 @@
             const selectedValue = selectElement.value;
 
             if (selectedValue === 'duales-studium') {
-                pdfFrame.src = 'duales-studium.pdf';  // PDF für Duales Studium
+                pdfFrame.src = 'duales-studium.pdf';
                 pdfLink.href = 'duales-studium.pdf';
                 pdfLink.textContent = 'Klick hier, um die Datei als PDF herunterzuladen';
             } else if (selectedValue === 'jobangebot') {
-                pdfFrame.src = 'jobangebot.pdf';  // PDF für Jobangebot
+                pdfFrame.src = 'jobangebot.pdf';
                 pdfLink.href = 'jobangebot.pdf';
                 pdfLink.textContent = 'Klick hier, um die Datei als PDF herunterzuladen';
             }
         }
     </script>
 
-    <script>
-        // Animationen auslösen, wenn ein Abschnitt sichtbar wird
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = "fadeInUp 1s forwards";
-                }
-            });
-        });
-
-        sections.forEach(section => observer.observe(section));
-    </script>
-
 </body>
 </html>
-
