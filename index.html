@@ -120,6 +120,25 @@
             width: 30px;
             height: 30px;
         }
+
+        /* Dropdown-Styling */
+        select {
+            font-size: 1.2rem;
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .pdf-container {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .pdf-container a {
+            color: #0073b1;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -143,8 +162,18 @@
     <!-- Motivationsschreiben -->
     <div class="section" id="motivationsschreiben">
         <h2>Motivationsschreiben</h2>
-        <iframe src="motivationsschreiben.pdf"></iframe>
-        <a href="motivationsschreiben.pdf" download class="download-button">Klick hier, um die Datei als PDF herunterzuladen</a>
+        
+        <!-- Dropdown-Menü zum Wechseln zwischen Duales Studium und Jobangebot -->
+        <select id="motivationswahl" onchange="updateMotivationsPDF()">
+            <option value="duales-studium">Duales Studium</option>
+            <option value="jobangebot">Jobangebot</option>
+        </select>
+
+        <!-- PDF-Anzeige -->
+        <div class="pdf-container" id="pdf-container">
+            <iframe id="pdf-frame" src="duales-studium.pdf"></iframe>
+            <a id="pdf-link" href="duales-studium.pdf" download class="download-button">Klick hier, um die Datei als PDF herunterzuladen</a>
+        </div>
     </div>
 
     <!-- LinkedIn -->
@@ -154,6 +183,26 @@
             <img src="linkedin-logo.png" alt="LinkedIn"> Zum Profil
         </a>
     </div>
+
+    <script>
+        // Funktion, die den Link der PDF je nach Auswahl im Dropdown-Menü ändert
+        function updateMotivationsPDF() {
+            const selectElement = document.getElementById('motivationswahl');
+            const pdfFrame = document.getElementById('pdf-frame');
+            const pdfLink = document.getElementById('pdf-link');
+            const selectedValue = selectElement.value;
+
+            if (selectedValue === 'duales-studium') {
+                pdfFrame.src = 'duales-studium.pdf';  // PDF für Duales Studium
+                pdfLink.href = 'duales-studium.pdf';
+                pdfLink.textContent = 'Klick hier, um die Datei als PDF herunterzuladen';
+            } else if (selectedValue === 'jobangebot') {
+                pdfFrame.src = 'jobangebot.pdf';  // PDF für Jobangebot
+                pdfLink.href = 'jobangebot.pdf';
+                pdfLink.textContent = 'Klick hier, um die Datei als PDF herunterzuladen';
+            }
+        }
+    </script>
 
     <script>
         // Animationen auslösen, wenn ein Abschnitt sichtbar wird
@@ -171,3 +220,4 @@
 
 </body>
 </html>
+
