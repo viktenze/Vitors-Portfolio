@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitors Portfolio</title>
+    <style>
+        /* Grundlegendes CSS */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            font-size: 2rem;
+            color: #333;
+            animation: bounce 2s infinite;
+            text-align: center;
+        }
+
+        .scroll-down img {
+            width: 50px;
+            height: auto;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .section:nth-child(even) {
+            background-color: #fff;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            width: 80%;
+            height: 500px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .download-button {
+            text-decoration: none;
+            color: white;
+            background-color: #0073b1;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .download-button:hover {
+            background-color: #005582;
+        }
+
+        .section a {
+            text-decoration: none;
+            color: #0073b1;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Aufforderung zum Scrollen -->
+    <header>
+        <h1>Willkommen zu Vitors Portfolio</h1>
+        <div class="scroll-down">
+            <p>Scrollen Sie nach unten</p>
+            <img src="down-arrow.png" alt="Scroll Down">
+        </div>
+    </header>
+
+    <!-- Lebenslauf -->
+    <div class="section" id="lebenslauf">
+        <h2>Lebenslauf</h2>
+        <iframe src="lebenslauf.pdf"></iframe>
+        <a href="lebenslauf.pdf" download class="download-button">Klick hier, um die Datei als PDF herunterzuladen</a>
+    </div>
+
+    <!-- Motivationsschreiben -->
+    <div class="section" id="motivationsschreiben">
+        <h2>Motivationsschreiben</h2>
+        <iframe src="motivationsschreiben.pdf"></iframe>
+        <a href="motivationsschreiben.pdf" download class="download-button">Klick hier, um die Datei als PDF herunterzuladen</a>
+    </div>
+
+    <!-- LinkedIn -->
+    <div class="section" id="linkedin">
+        <h2>LinkedIn-Profil</h2>
+        <a href="https://www.linkedin.com/in/vitor-example/" target="_blank">
+            <img src="linkedin-logo.png" alt="LinkedIn"> Zum Profil
+        </a>
+    </div>
+
+    <script>
+        // Animationen auslösen, wenn ein Abschnitt sichtbar wird
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = "fadeInUp 1s forwards";
+                }
+            });
+        });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+
+</body>
+</html>

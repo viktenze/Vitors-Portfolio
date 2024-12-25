@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebenslauf</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        iframe {
+            width: 80%;
+            height: 80vh;
+            border: none;
+            margin: 20px auto;
+        }
+
+        .download-button {
+            margin: 20px 0;
+            text-decoration: none;
+            color: white;
+            background-color: #0073b1;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        .download-button:hover {
+            background-color: #005582;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lebenslauf</h1>
+    <!-- PDF direkt eingebunden -->
+    <iframe src="lebenslauf.pdf"></iframe>
+    <!-- Download-Button -->
+    <div>
+        <a href="lebenslauf.pdf" download class="download-button">Klick hier, um die Datei als PDF herunterzuladen</a>
+    </div>
+</body>
+</html>
